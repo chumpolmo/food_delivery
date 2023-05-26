@@ -1,38 +1,61 @@
-<html>
-<head>
-<meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Forgot your password</title>
-  <link rel="stylesheet" href="css/w3.css">
-  <script src="js/jquery.min.js"></script>
-  <script src="js/1011-0.js"></script>
-</head>
+<?php
+include "tpls/header.php";
+?>
 <body>
-  <div class="w3-container w3-main w3-pale-yellow">
-    <h3>ต้องการขอรหัสผ่าน? (กรอก ชื่อผู้ใช้งาน(username) และ อีเมล)</h3>
-    <hr>
-    <form name="form1" method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
-      ชื่อผู้ใช้งาน : <input name="username" type="text" id="txtUsername"><br>
-      อีเมล : <input name="email" type="text" id="txtEmail"><br><br>
-      <input type="submit" name="btnSubmit" value="ยืนยันการขอรหัสผ่าน" class="w3-button w3-lime">
-      <a href="login.php" class="w3-button w3-light-grey ">กลับหน้าเข้าสู่ระบบ</a>
-    </form>
+<nav class="navbar navbar-default bg_title_1">
+    <span>
+      <?=_TITLE?>
+    </span>
+</nav>
+<div class="limiter">
+  <form class="form-horizontal" name="form1" method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
+  <div class="container-fluid">
+    <div class="panel panel-default bg_subtitle_1">
+      <h4>ถ้าคุณลืมรหัสผ่าน (Password)?</h4>
+      กรุณากรอกชื่อผู้ใช้งาน (Username) และ อีเมล (E-mail)
+    </div>
   </div>
+  <hr>
+  <div class="form-group">
+    <label for="inputEmail2" class="col-sm-2 control-label">ชื่อผู้ใช้งาน</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputEmail2" name="username" placeholder="ชื่อผู้ใช้งาน" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">อีเมล</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="inputEmail3" name="email" placeholder="อีเมล" required>
+    </div>
+  </div>
+  <div class="form-group text-center">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" name="btnSubmit" class="btn btn-success btn-lg btn-block txt4">ยืนยันการขอข้อมูล</button>
+      <button type="reset" name="btnReset" class="btn btn-default btn-lg btn-block txt3">เคลียร์</button>
+    </div>
+  </div>
+
+  <div class="text-center p-t-32 p-b-32">
+    <a class="txt2" href="login.php">
+    <i class="fa fa-long-arrow-left m-l-5" aria-hidden="true"></i>
+    ย้อนกลับ  
+    </a>
+  </div>
+</form>
 <?php
   include('config.php');
+
+  // E-mail Configuration settings
   ini_set('SMTP','localhost');
   ini_set('smtp_port',25);
+  
   if (isset($_POST['btnSubmit'])) {
-    $strSQL = "SELECT * FROM users WHERE Email = '".trim($_POST['email'])."'  
-  OR Username = '".trim($_POST['username'])."' ";
-  $objQuery = mysqli_query($db ,$strSQL);
-  $objResult = mysqli_fetch_array($objQuery);
-  if(!$objResult)
-  {
+    $strSQL = "SELECT * FROM users WHERE Email = '".trim($_POST['email'])."' OR Username = '".trim($_POST['username'])."' ";
+    $objQuery = mysqli_query($db ,$strSQL);
+    $objResult = mysqli_fetch_array($objQuery);
+    if(!$objResult){
       echo "Not Found Username or Email!";
-  }
-  else
-  {
+    }else{
       echo "Your password send successful.<br>Send to mail : ".$objResult["Email"];   
 
       $strTo = $objResult["Email"];
@@ -47,11 +70,10 @@
       $strMessage .= "ThaiCreate.Com<br>";
       $flgSend = mail($strTo,$strSubject,$strMessage,$strHeader); 
 
+    }
   }
-
-  }
-  
   mysqli_close($db);
 ?>
+</div>
 </body>
 </html>

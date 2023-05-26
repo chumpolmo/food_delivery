@@ -4,6 +4,10 @@
 
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
+@font-face {
+  font-family: Kanit;
+  src: url('../fonts/poppins/Kanit Light.ttf'); 
+}
 
 @font-face {
   font-family: Poppins-Regular;
@@ -36,12 +40,12 @@
 
 body, html {
 	height: 100%;
-	font-family: Poppins-Regular, sans-serif;
+	font-family: Kanit, Poppins-Regular, sans-serif;
 }
 
 /*---------------------------------------------*/
 a {
-	font-family: Poppins-Regular;
+	font-family: Kanit;
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
@@ -63,11 +67,12 @@ a:hover {
 
 /*---------------------------------------------*/
 h1,h2,h3,h4,h5,h6 {
+  font-family: Kanit, Poppins-Regular, sans-serif;
 	margin: 0px;
 }
 
 p {
-	font-family: Poppins-Regular;
+	font-family: Kanit, Poppins-Regular;
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
@@ -134,18 +139,33 @@ iframe {
 /*//////////////////////////////////////////////////////////////////
 [ Utility ]*/
 .txt1 {
-  font-family: Poppins-Regular;
+  font-family: Kanit, Poppins-Regular;
   font-size: 13px;
   line-height: 1.5;
   color: #999999;
 }
 
 .txt2 {
-  font-family: Poppins-Regular;
+  font-family: Kanit, Poppins-Regular;
   font-size: 13px;
   line-height: 1.5;
   color: #666666;
 }
+
+.txt3 {
+  font-family: Kanit, Poppins-Regular;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #666666;
+}
+
+.txt4 {
+  font-family: Kanit, Poppins-Regular;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #ffffff;
+}
+
 
 
 /*//////////////////////////////////////////////////////////////////
@@ -209,7 +229,7 @@ iframe {
 }
 
 .login100-form-title {
-  font-family: Poppins-Bold;
+  font-family: Kanit;
   font-size: 24px;
   color: #333333;
   line-height: 1.2;
@@ -230,7 +250,7 @@ iframe {
 }
 
 .input100 {
-  font-family: Poppins-Medium;
+  font-family: Kanit, Poppins-Medium;
   font-size: 15px;
   line-height: 1.5;
   color: #666666;
@@ -323,7 +343,7 @@ iframe {
 }
 
 .login100-form-btn {
-  font-family: Montserrat-Bold;
+  font-family: Kanit, Montserrat-Bold;
   font-size: 15px;
   line-height: 1.5;
   color: #fff;
@@ -418,7 +438,7 @@ iframe {
   right: 8px;
   pointer-events: none;
 
-  font-family: Poppins-Medium;
+  font-family: Kanit, Poppins-Medium;
   color: #c80000;
   font-size: 13px;
   line-height: 1.4;
@@ -467,4 +487,48 @@ p.b {
   overflow: hidden;
   text-overflow: ellipsis; 
   border: 1px solid #000000;
+}
+
+.bg_title_1 {
+  background-color: #9053c7;
+  color: #ffffff;
+  font-family: Kanit;
+  font-size: 24px;
+  line-height: 1.2;
+  text-align: left;
+  width: 100%;
+  display: block;
+  padding: 14px;
+}
+
+.bg_subtitle_1 {
+  background-color: #ffffff;
+  color: #000000;
+  font-family: Kanit;
+  font-size: 15px;
+  line-height: 1.2;
+  text-align: left;
+  width: 100%;
+  display: block;
+  padding: 10px;
+}
+
+.warn {
+  color: firebrick;
+}
+.warn_2 {
+  color: firebrick;
+  font-size: small;
+  text-align: left;
+}
+
+.bg_footer_1 {
+  background-color: #ead2ff;
+  color: #8e8e8e;
+  font-family: Kanit;
+  font-size: 8pt;
+  line-height: 1.2;
+  text-align: center;
+  width: 100%;
+  display: inline-block;
 }
